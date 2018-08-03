@@ -30,6 +30,7 @@ class DeckView extends Component {
                         <Button
                             style={styles.blackButton} 
                             textStyle={styles.textWhite}
+                            onPress={() => navigate({ routeName: 'QuizView', params: { title: deck.title }})}
                         > 
                             Start Quiz
                         </Button>

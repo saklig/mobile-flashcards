@@ -27,6 +27,17 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
     },
+    textContainer: {
+        flex:1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 5,
+    },
+    buttonContainer: {
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        paddingBottom: 40
+    },
     deck: {
         marginTop: 10,
         padding: 40,
@@ -62,6 +73,14 @@ export const styles = StyleSheet.create({
         backgroundColor: palette.white,
         borderColor: palette.black
     },
+    greenButton: {
+        backgroundColor: palette.green,
+        borderColor: palette.green
+    },
+    redButton: {
+        backgroundColor: palette.red,
+        borderColor: palette.red
+    },
     textWhite: {
         color: palette.white
     },
@@ -78,5 +97,21 @@ export const styles = StyleSheet.create({
         marginTop: 40,
         paddingLeft: 10, 
         paddingRight: 10
+    },
+    flipCard: {
+        width: 300, 
+        height: 400,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: palette.white
+    },
+    flipCardBack: {
+        backgroundColor: palette.white,
+        position: 'absolute',
+        top: 0
+    },
+    flipCardText: {
+        color: palette.red,
+        padding: 10
     },
 });

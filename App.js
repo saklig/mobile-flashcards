@@ -5,10 +5,12 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider, connect } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import decks from './reducers/decks';
+import quiz from './reducers/quiz';
 import DeckListView from './components/DeckListView';
 import DeckView from './components/DeckView';
 import { palette } from './styles/styles';
 import AddCard from './components/AddCard';
+import QuizView from './components/QuizView';
 
 const AppNavigator = createStackNavigator({
     Home: {
@@ -34,6 +36,16 @@ const AppNavigator = createStackNavigator({
             },
         }),
     },
+    QuizView: {
+        screen: QuizView,
+        navigationOptions: ({ navigation }) => ({
+            title: `${navigation.state.params.title} quiz`,
+            headerTintColor: palette.white,
+            headerStyle: {
+                backgroundColor: palette.black,
+            },
+        }),
+    },
 });
 
 const navReducer = createNavigationReducer(AppNavigator);
@@ -49,7 +61,7 @@ const logger = store => next => action => {
 
 const appReducer = combineReducers({
     nav: navReducer,
-    decks
+    decks, quiz
 });
 
 const reduxMiddleware = createReactNavigationReduxMiddleware(
