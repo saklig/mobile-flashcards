@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import { ScrollView } from 'react-native';
 
 class DeckListView extends Component {
     constructor(props) {
@@ -7,23 +9,30 @@ class DeckListView extends Component {
         this.state = {  };
     }
     render() {
+        const { decks } = this.props;
         return (
-            <View style={styles.container}>
-                <Text>Open up App.js to start working on your app!</Text>
-                <Text>Changes you make will automatically reload.</Text>
-                <Text>Shake your phone to open the developer menu.</Text>
-            </View>
+            <ScrollView>
+                {Object.keys(decks).map((deck) => (
+                    <View key={deck}>
+                        <Text>
+                            {deck}
+                        </Text>
+                    </View>
+                ))}
+            </ScrollView>
         );
     }
 }
 
-export default DeckListView;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+const mapStateToProps = ({ decks }) => ({
+    decks
 });
+
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(DeckListView);
