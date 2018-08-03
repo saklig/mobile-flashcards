@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { ScrollView } from 'react-native';
+import Deck from './Deck';
 
 class DeckListView extends Component {
     constructor(props) {
@@ -13,11 +13,7 @@ class DeckListView extends Component {
         return (
             <ScrollView>
                 {Object.keys(decks).map((deck) => (
-                    <View key={deck}>
-                        <Text>
-                            {deck}
-                        </Text>
-                    </View>
+                    <Deck key={deck} {...decks[deck]} />
                 ))}
             </ScrollView>
         );

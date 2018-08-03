@@ -4,17 +4,28 @@ import { reduxifyNavigator, createReactNavigationReduxMiddleware, createNavigati
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider, connect } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
-
 import decks from './reducers/decks';
 import DeckListView from './components/DeckListView';
+import DeckView from './components/DeckView';
+import { palette } from './styles/styles';
 
-const MyNavigator = createStackNavigator({
+const AppNavigator = createStackNavigator({
     Home: {
         screen: DeckListView,
-    }
+    },
+    DeckView: {
+        screen: DeckView,
+        navigationOptions: ({ navigation }) => ({
+            title: `${navigation.state.params.title}`,
+            headerTintColor: palette.white,
+            headerStyle: {
+                backgroundColor: palette.black,
+            },
+        }),
+    },
 });
 
-const navReducer = createNavigationReducer(MyNavigator);
+const navReducer = createNavigationReducer(AppNavigator);
 
 const logger = store => next => action => {
     console.group(action.type);
@@ -27,7 +38,7 @@ const logger = store => next => action => {
 
 const appReducer = combineReducers({
     nav: navReducer,
-    decks,
+    decks
 });
 
 const reduxMiddleware = createReactNavigationReduxMiddleware(
@@ -35,7 +46,7 @@ const reduxMiddleware = createReactNavigationReduxMiddleware(
     state => state.nav,
 );
 
-const App = reduxifyNavigator(MyNavigator, 'root');
+const App = reduxifyNavigator(AppNavigator, 'root');
 const mapStateToProps = (state) => ({
     state: state.nav,
 });
