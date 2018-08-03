@@ -11,9 +11,9 @@ class Deck extends Component {
         this.state = {  };
     }
     render () {
-        const { title, questions, navigateToDeck } = this.props;
+        const { title, questions, navigate } = this.props;
         return (
-            <TouchableOpacity style={styles.deck} onPress={() => navigateToDeck({ routeName: 'DeckView', params: { title }})}>
+            <TouchableOpacity style={styles.deck} onPress={() => navigate({ routeName: 'DeckView', params: { title }})}>
                 <Text style={styles.deckText}>{title}</Text>
                 <Text style={styles.deckText}>{questions.length} Cards</Text>
             </TouchableOpacity>
@@ -22,7 +22,7 @@ class Deck extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    navigateToDeck: (options) => dispatch(NavigationActions.navigate(options))
+    navigate: (options) => dispatch(NavigationActions.navigate(options))
 });
 
 export default connect(

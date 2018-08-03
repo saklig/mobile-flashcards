@@ -30,5 +30,22 @@ export const styles = StyleSheet.create({
     deckText: {
         fontSize: fonts.medium,
         textAlign: 'center'
+    },
+    actionContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingBottom: 40
+    },
+    baseButton: {
+        justifyContent: 'center',
+        width: 200, 
+        height: 50,
+    },
+    baseButtonText: {
+        textAlign: 'center',
+        fontSize: 20,
+    },
+    baseButtonView: {
+        padding: 5
     }
 });
