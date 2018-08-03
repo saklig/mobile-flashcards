@@ -1,3 +1,5 @@
+import { ADD_CARD } from '../actions/decks';
+
 const initialDecksModel = {
     React: {
         title: 'React',
@@ -25,6 +27,17 @@ const initialDecksModel = {
 
 const decks = (state = initialDecksModel, action) => {
     switch (action.type) {
+    case ADD_CARD: 
+        return {
+            ...state, 
+            [action.deck]: {
+                ...state[action.deck],
+                questions: [
+                    ...state[action.deck].questions,
+                    action.card
+                ]
+            }
+        };
     default:
         return state;
     }

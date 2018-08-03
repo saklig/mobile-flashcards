@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { styles } from '../styles/styles';
 import { connect } from 'react-redux';
 import Button from './Button';
+import { NavigationActions } from 'react-navigation';
 
 class DeckView extends Component {
     constructor(props) {
@@ -10,7 +11,7 @@ class DeckView extends Component {
         this.state = {  };
     }
     render() {
-        const { deck } = this.props;
+        const { deck, navigate } = this.props;
         return (
             <View style={styles.container}>
                 <View style={styles.textContainer}>
@@ -19,8 +20,9 @@ class DeckView extends Component {
                 </View>
                 <View style={styles.buttonContainer}>
                     <Button
-                        style={styles.invertedButton} 
+                        style={styles.whiteButton} 
                         textStyle={styles.textBlack}
+                        onPress={() => navigate({ routeName: 'AddCard', params: { title: deck.title }})}
                     > 
                         Add Card
                     </Button>
@@ -42,7 +44,11 @@ const mapStateToProps = ({ decks }, { navigation }) => ({
     deck: decks[navigation.state.params.title]
 });
 
+const mapDispatchToProps = (dispatch) => ({
+    navigate: (options) => dispatch(NavigationActions.navigate(options))
+});
+
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(DeckView);

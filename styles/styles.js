@@ -21,6 +21,12 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    containerTop: {
+        flex: 1,
+        backgroundColor: palette.white,
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+    },
     deck: {
         marginTop: 10,
         padding: 40,
@@ -34,7 +40,7 @@ export const styles = StyleSheet.create({
     actionContainer: {
         alignItems: 'center',
         justifyContent: 'center',
-        paddingBottom: 40
+        paddingBottom: fonts.large
     },
     baseButton: {
         justifyContent: 'center',
@@ -43,9 +49,34 @@ export const styles = StyleSheet.create({
     },
     baseButtonText: {
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: fonts.medium,
+    },
+    blackButton: {
+        backgroundColor: palette.black,
+        borderColor: palette.black
+    },
+    textBlack: {
+        color: palette.black
+    },
+    whiteButton: {
+        backgroundColor: palette.white,
+        borderColor: palette.black
+    },
+    textWhite: {
+        color: palette.white
     },
     baseButtonView: {
         padding: 5
-    }
+    },
+    input: {
+        fontSize: fonts.medium,
+        height:40,
+        width:300, 
+        borderColor: palette.black,
+        borderWidth:1, 
+        borderRadius: 4, 
+        marginTop: 40,
+        paddingLeft: 10, 
+        paddingRight: 10
+    },
 });

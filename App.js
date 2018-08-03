@@ -8,6 +8,7 @@ import decks from './reducers/decks';
 import DeckListView from './components/DeckListView';
 import DeckView from './components/DeckView';
 import { palette } from './styles/styles';
+import AddCard from './components/AddCard';
 
 const AppNavigator = createStackNavigator({
     Home: {
@@ -17,6 +18,16 @@ const AppNavigator = createStackNavigator({
         screen: DeckView,
         navigationOptions: ({ navigation }) => ({
             title: `${navigation.state.params.title}`,
+            headerTintColor: palette.white,
+            headerStyle: {
+                backgroundColor: palette.black,
+            },
+        }),
+    },
+    AddCard: {
+        screen: AddCard,
+        navigationOptions: ({ navigation }) => ({
+            title: `Add card to ${navigation.state.params.title}`,
             headerTintColor: palette.white,
             headerStyle: {
                 backgroundColor: palette.black,
