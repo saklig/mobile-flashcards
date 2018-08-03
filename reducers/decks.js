@@ -1,6 +1,6 @@
-import { ADD_CARD, ADD_DECK } from '../actions/decks';
+import { ADD_CARD, ADD_DECK, RECEIVE_DECKS } from '../actions/decks';
 
-const initialDecksModel = {
+export const initialDecksModel = {
     React: {
         title: 'React',
         questions: [
@@ -25,8 +25,8 @@ const initialDecksModel = {
     }
 };
 
-const decks = (state = initialDecksModel, action) => {
-    switch (action.type) {
+const decks = (state = {}, action) => {
+    switch (action.type) { 
     case ADD_CARD: 
         return {
             ...state, 
@@ -45,7 +45,12 @@ const decks = (state = initialDecksModel, action) => {
                 title: action.deck,
                 questions: [] }
         };
-    default:
+    case RECEIVE_DECKS:
+        return {
+            ...state,
+            ...action.decks
+        };
+    default: 
         return state;
     }
 };

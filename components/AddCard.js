@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { View, Text, TextInput, KeyboardAvoidingView } from 'react-native';
 import Button from './Button';
 import { styles } from '../styles/styles';
-import { addCard } from '../actions/decks';
+import { requestAddCard } from '../actions/decks';
 
 class AddCard extends Component {
     state = {
@@ -15,17 +15,19 @@ class AddCard extends Component {
     submit() {
         const { deck, navigation } = this.props;
 
-        console.log('submit', this.props);
-
-        if ((this.state.question==null) || (this.state.answer==null)) {
-            this.setState({ error: 'Please enter both a question and answer.' });
+        if (this.state.question == null && this.state.answer == null) {
+            this.setState({ error: 'Please enter both a question and an answer.' });
+        } else if (this.state.question !== null && this.state.answer == null) {
+            this.setState({ error: 'This question needs an answer.' });
+        } else if (this.state.question == null && this.state.answer !== null) {
+            this.setState({ error: 'This answer needs a question.' });
         } else {
             const card = {
                 question: this.state.question,
                 answer: this.state.answer,
                 error: null,
             };
-            this.props.addCard(deck.title, card);
+            this.props.requestAddCard(deck.title, card);
             navigation.goBack();
         }
     }
@@ -70,7 +72,7 @@ const mapStateToProps = ({ decks }, { navigation }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    addCard: (deck, card) => dispatch(addCard(deck, card))
+    requestAddCard: (deck, card) => dispatch(requestAddCard(deck, card))
 });
 
 export default connect(

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, KeyboardAvoidingView, Text, TextInput } from 'react-native';
 import Button from './Button';
 import { styles } from '../styles/styles';
-import { addDeck } from '../actions/decks';
+import { requestAddDeck } from '../actions/decks';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 
@@ -18,9 +18,8 @@ class AddDeck extends Component {
         if (this.state.text == null) {
             this.setState({ error: 'Please input a name for the deck' });
         } else {
-            this.props.addDeck(newDeck);
+            this.props.requestAddDeck(newDeck);
             this.setState({ text: null, error: null });
-            this.props.navigate({ routeName: 'DeckView', params: { title: newDeck }});
         }
     }
 
@@ -55,7 +54,7 @@ class AddDeck extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    addDeck: (deck, navigation) => dispatch(addDeck(deck, navigation)),
+    requestAddDeck: (deck, navigation) => dispatch(requestAddDeck(deck, navigation)),
     navigate: (options) => dispatch(NavigationActions.navigate(options))
 });
 
