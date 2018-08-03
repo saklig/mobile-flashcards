@@ -18,7 +18,7 @@ class DeckView extends Component {
                     <Text style={styles.header}>{deck.title}</Text>
                     <Text style={styles.subheader}>{deck.questions.length} cards</Text>
                 </View>
-                <View style={styles.buttonContainer}>
+                <View style={styles.actionContainer}>
                     <Button
                         style={styles.whiteButton} 
                         textStyle={styles.textBlack}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createStackNavigator, } from 'react-navigation';
+import { createStackNavigator, createMaterialTopTabNavigator } from 'react-navigation';
 import { reduxifyNavigator, createReactNavigationReduxMiddleware, createNavigationReducer } from 'react-navigation-redux-helpers';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider, connect } from 'react-redux';
@@ -11,10 +11,35 @@ import DeckView from './components/DeckView';
 import { palette } from './styles/styles';
 import AddCard from './components/AddCard';
 import QuizView from './components/QuizView';
+import AddDeck from './components/AddDeck';
+
+const Tabs = createMaterialTopTabNavigator({
+    DeckListView : {
+        screen: DeckListView,
+        navigationOptions: {
+            tabBarLabel: 'My Decks',
+        },
+    },
+    AddDeck: {
+        screen: AddDeck,
+        navigationOptions: {
+            tabBarLabel: 'Add New Deck',
+        },
+    }
+},
+{
+    navigationOptions: {
+        headerTintColor: palette.white,
+        headerStyle: {
+            backgroundColor: palette.black,
+        },
+        
+    },
+});
 
 const AppNavigator = createStackNavigator({
     Home: {
-        screen: DeckListView,
+        screen: Tabs,
     },
     DeckView: {
         screen: DeckView,

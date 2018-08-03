@@ -45,7 +45,7 @@ class QuizView extends Component {
                 <View style={styles.container}>
                     <View style={styles.container}>
                         <Text style={styles.header}>
-                            Great job studying! You got {percentCorrect}% correct
+                            Awesome! You got {percentCorrect}% correct
                         </Text>
                         <Button 
                             onPress={() => this.handleRestartQuizClick()}
@@ -91,7 +91,7 @@ class QuizView extends Component {
                         </View>
                     </FlipCard>
                 </View>
-                <View style={styles.buttonContainer}>
+                <View style={styles.actionContainer}>
                     <Button 
                         onPress={() => this.handleCorrectClick()} 
                         style={styles.greenButton} 
