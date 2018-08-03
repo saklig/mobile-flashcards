@@ -6,6 +6,7 @@ import { styles } from '../styles/styles';
 import FlipCard from 'react-native-flip-card';
 import { answerQuestion, restartQuiz } from '../actions/quiz';
 import { NavigationActions } from 'react-navigation';
+import { removeExistingNotification, setLocalNotification } from '../utilities/notification';
 
 class QuizView extends Component {
     constructor(props) {
@@ -41,6 +42,10 @@ class QuizView extends Component {
         const numberOfQuestions = deck.questions.length;
         if (currentQuestion >= numberOfQuestions) {
             const percentCorrect = this.getScorePercentage(score, numberOfQuestions);
+
+            removeExistingNotification()
+                .then(setLocalNotification);
+
             return (
                 <View style={styles.container}>
                     <View style={styles.container}>

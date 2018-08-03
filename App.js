@@ -12,6 +12,7 @@ import { palette } from './styles/styles';
 import AddCard from './components/AddCard';
 import QuizView from './components/QuizView';
 import AddDeck from './components/AddDeck';
+import { setNotification } from './utilities/notification';
 
 const Tabs = createMaterialTopTabNavigator({
     DeckListView : {
@@ -106,6 +107,9 @@ const store = createStore(
 );
 
 export default class Root extends Component {
+    componentDidMount () {
+        setNotification();
+    }
     render() {
         return (
             <Provider store={store}>

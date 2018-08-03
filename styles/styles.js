@@ -71,7 +71,8 @@ export const styles = StyleSheet.create({
     },
     whiteButton: {
         backgroundColor: palette.white,
-        borderColor: palette.black
+        borderColor: palette.black,
+        borderWidth: 1
     },
     greenButton: {
         backgroundColor: palette.green,
